@@ -35,7 +35,7 @@ OVMF_DIR="."
 args=(
   -enable-kvm -m "$ALLOCATED_RAM" -cpu Penryn,kvm=on,vendor=GenuineIntel,+invtsc,vmware-cpuid-freq=on,"$MY_OPTIONS"
   -machine q35
-  -usb -device usb-kbd -device usb-tablet
+  -usb -device usb-kbd -device usb-tablet # -device usb-host,vendorid=0x0e41,productid=0x4253 -device usb-host,vendorid=0x1fc9,productid=0x000c -device usb-host,vendorid=0x0781,productid=0x5581
   -smp "$CPU_THREADS",cores="$CPU_CORES",sockets="$CPU_SOCKETS"
   -device usb-ehci,id=ehci
   # -device usb-kbd,bus=ehci.0
@@ -62,6 +62,12 @@ args=(
   # -netdev user,id=net0 -device vmxnet3,netdev=net0,id=net0,mac=52:54:00:c9:18:27  # Note: Use this line for High Sierra
   -monitor stdio
   -device vmware-svga
+  # line 6
+  -device usb-host,vendorid=0x0e41,productid=0x4253
+  -device usb-host,vendorid=0x1fc9,productid=0x000c
+  # sandisk ultra
+  -device usb-host,vendorid=0x0781,productid=0x5581
+  -virtfs local,path="/home/kczulko/qemu-shared-folder",mount_tag=hostshare,security_model=none,id=hostshare
 )
 
 qemu-system-x86_64 "${args[@]}"

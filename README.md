@@ -1,3 +1,6 @@
+Bus 003 Device 004: ID 1fc9:000c NXP Semiconductors LPC4330FET180 [ARM Cortex M4 + M0] (device firmware upgrade mode)
+Bus 003 Device 005: ID 0e41:4253 Line6, Inc. HX Stomp XL
+
 ### Note
 
 This `README.md` documents the process of creating a `Virtual Hackintosh`
